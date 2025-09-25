@@ -1,5 +1,6 @@
 import React from "react";
-import "../styles/Card.css";
+import Image from "next/image";
+import "../styles/Card.module.css";
 
 interface CardProps {
   image: string;
@@ -12,7 +13,17 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ image, price, category, description, location }) => {
   return (
     <div className="card">
-      <img src={image} alt={description} className="card-image" />
+      <div className="card-image-wrapper">
+        <Image
+          src={image}
+          alt={description}
+          className="card-image"
+          width={300}      // default width
+          height={200}     // default height
+          style={{ objectFit: "cover", width: "100%", height: "auto" }} // responsive
+          priority={false} // lazy load by default
+        />
+      </div>
       <div className="card-content">
         <h3 className="card-price">{price}</h3>
         <p className="card-category">{category}</p>

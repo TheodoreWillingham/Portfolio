@@ -27,7 +27,13 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ message: "User has been created" }, { status: 201 });
 
-  } catch (e: any) {
-    return NextResponse.json({ message: e.message }, { status: 500 });
+  } catch (e: unknown) { // changed error type from any to unkown and added type guard
+    if (e instanceof Error) {
+      console.error("POST /api/users error:", e.message);
+      return NextResponse.json({ message: e.message }, { status: 500 });
+    }
+  
+    console.error("POST /api/users error:", e);
+    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   }
 }

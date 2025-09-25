@@ -5,7 +5,7 @@ import { NextRequest } from "next/server";
 //handles endpoints for our set of items (in /api/items/route.ts)
 
 
-export async function GET(request: NextRequest) {
+export async function GET() { // used to have request: NextRequest as argument
     await connectMongoDB();
     const items = await Item.find();
     return NextResponse.json({ items }, {status: 200}) //IDK what the status code should be
