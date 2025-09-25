@@ -6,12 +6,6 @@ import { NextResponse, NextRequest } from "next/server";
 
 // GET, PUT, DELETE for /api/items/[id]
 
-interface RouteParams {
-    id: string;
-}
-
-
-
 // Get's unique item
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
     const { id } = await params; //Get the items ID
