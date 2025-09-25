@@ -7,7 +7,7 @@ import { NextResponse, NextRequest } from "next/server";
 // GET, PUT, DELETE for /api/items/[id]
 
 // Get's unique item
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const { id } = await params; //Get the items ID
     await connectMongoDB();
     const item = await Item.findOne({ _id: id }); //finds item with given ID
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 }
 
 // Update's unique item
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const { id } = await params; //Get the items ID
     const { name: name, price: price, location: location, lat: lat, lon: lon, imageUrl: imageUrl, category: category } = await request.json(); 
     await connectMongoDB()
@@ -34,7 +34,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 }
 
 // Delte's unique item
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) { //if Id isn't valid
