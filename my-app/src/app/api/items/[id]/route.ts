@@ -3,15 +3,15 @@ import mongoose from "mongoose";
 import Item from "@/app/models/itemSchema";
 import { NextRequest, NextResponse } from "next/server";
 
-// GET, PUT, DELETE for /api/items/[id]
-
-// Get's unique item
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
-  const { id } = await params; // await the params promise
+// GET
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function GET(request: NextRequest, { params }: any) {
+  const { id } = await params; // params is async in Next.js 15
   await connectMongoDB();
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return NextResponse.json({ message: "Invalid ID format" }, { status: 400 });
+  }
 
   const item = await Item.findById(id);
   if (!item) return NextResponse.json({ message: "Item not found" }, { status: 404 });
@@ -19,13 +19,12 @@ export async function GET(
   return NextResponse.json({ item }, { status: 200 });
 }
 
-// Update's unique item
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+// PUT
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function PUT(request: NextRequest, { params }: any) {
   const { id } = await params;
-  const { name, price, location, lat, lon, imageUrl, category } = await request.json();
+  const body = await request.json();
+  const { name, price, location, lat, lon, imageUrl, category } = body;
 
   await connectMongoDB();
   const updatedItem = await Item.findByIdAndUpdate(
@@ -36,14 +35,12 @@ export async function PUT(
 
   if (!updatedItem) return NextResponse.json({ message: "Item not found" }, { status: 404 });
 
-  return NextResponse.json({ message: "Item Updated", item: updatedItem }, { status: 200 });
+  return NextResponse.json({ message: "Item updated", item: updatedItem }, { status: 200 });
 }
 
-// Delete's unique item
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+// DELETE
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function DELETE(request: NextRequest, { params }: any) {
   const { id } = await params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
