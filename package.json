@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "next-auth": "^4.24.11"
+  },
+  "scripts": {
+    "dev": "npm --prefix ./my-app run dev"
   }
 }

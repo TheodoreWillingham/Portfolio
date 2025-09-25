@@ -1,6 +1,6 @@
 "use client"
 
-import React, { use } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import styles from '../styles/Items.module.css';
 import "../styles/Items.css"
@@ -32,7 +32,7 @@ interface ItemsProps {
 const Items: React.FC<ItemsProps> = ({ items }) => {
 
   const [mounted, setMounted] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -40,7 +40,7 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
 
   if (!mounted) return null; // or <p>Loading...</p>
 
-  const handleClick = (id: string, name: string, category: string) => {
+  const handleClick = (id: string) => {
     window.location.href = `/items/${id}`; //This hard resets the page and fixes styling errors
 }
 
@@ -50,7 +50,7 @@ const Items: React.FC<ItemsProps> = ({ items }) => {
     <div className={styles.itemsContainer}>
       {items.map((item) => (
         //This Div holds the image and the item details 
-        <div onClick={() => handleClick(item._id, item.name, item.category)} key={item._id} className={styles.itemCard} style={{ cursor: "pointer" }}>
+        <div onClick={() => handleClick(item._id)} key={item._id} className={styles.itemCard} style={{ cursor: "pointer" }}>
           <Image
             src={item.imageUrl}
             alt={item.name}
