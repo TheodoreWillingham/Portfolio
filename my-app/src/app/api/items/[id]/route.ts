@@ -1,53 +1,59 @@
 import connectMongoDB from "../../../../../config/mongodb";
 import mongoose from "mongoose";
 import Item from "@/app/models/itemSchema";
-import { NextResponse, NextRequest } from "next/server";
-
+import { NextRequest, NextResponse } from "next/server";
 
 // GET, PUT, DELETE for /api/items/[id]
 
 // Get's unique item
-export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params; //Get the items ID
-    await connectMongoDB();
-    const item = await Item.findOne({ _id: id }); //finds item with given ID
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params; // await the params promise
+  await connectMongoDB();
 
-    if (!item) {
-        return NextResponse.json({ message: "Item not found" }, { status: 404 });
-    }
+  const item = await Item.findById(id);
+  if (!item) return NextResponse.json({ message: "Item not found" }, { status: 404 });
 
-    return NextResponse.json({ item }, { status: 200 });
+  return NextResponse.json({ item }, { status: 200 });
 }
 
 // Update's unique item
-export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params; //Get the items ID
-    const { name: name, price: price, location: location, lat: lat, lon: lon, imageUrl: imageUrl, category: category } = await request.json(); 
-    await connectMongoDB()
-    const updatedItem = await Item.findByIdAndUpdate(id,  { name, price, location, lat, lon, imageUrl, category }); 
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  const { name, price, location, lat, lon, imageUrl, category } = await request.json();
 
-    if (!updatedItem) {
-        return NextResponse.json({ message: "Item not found" }, { status: 404 });
-    }
+  await connectMongoDB();
+  const updatedItem = await Item.findByIdAndUpdate(
+    id,
+    { name, price, location, lat, lon, imageUrl, category },
+    { new: true }
+  );
 
-    return NextResponse.json({ message: "Item Updated" }, { status: 200 });
+  if (!updatedItem) return NextResponse.json({ message: "Item not found" }, { status: 404 });
+
+  return NextResponse.json({ message: "Item Updated", item: updatedItem }, { status: 200 });
 }
 
-// Delte's unique item
-export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
+// Delete's unique item
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) { //if Id isn't valid
-        return NextResponse.json({ messsage: "Invalid ID format" }, { status: 400 });
-    }
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return NextResponse.json({ message: "Invalid ID format" }, { status: 400 });
+  }
 
-    await connectMongoDB();
-    const deletedItem = await Item.findByIdAndDelete(id);
+  await connectMongoDB();
+  const deletedItem = await Item.findByIdAndDelete(id);
 
-    if (!deletedItem) { //if item not found
-        return NextResponse.json({ message: "Item not found"}, { status: 404 });
-    }
+  if (!deletedItem) return NextResponse.json({ message: "Item not found" }, { status: 404 });
 
-    return NextResponse.json({ message: "Item deleted" }, { status: 200 });
-
+  return NextResponse.json({ message: "Item deleted" }, { status: 200 });
 }
