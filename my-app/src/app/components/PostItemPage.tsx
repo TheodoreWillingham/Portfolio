@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState} from "react";
 import { useRouter } from "next/navigation"; // For navigation
 import "../styles/PostItemPage.css";
 import Image from "next/image";
@@ -111,7 +111,7 @@ const PostItemPage = () => {
     e.preventDefault();
     // Redirect to the homepage with query parameters
 
-    const response = await fetch("/api/items", {
+    await fetch("/api/items", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
