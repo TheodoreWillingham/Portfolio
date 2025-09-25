@@ -21,13 +21,10 @@ export default function Home() {
       <Image src="/assets/logo.png" alt="Bulldog Market Logo" className="logo" width={200} height={200} />
       <h1>Welcome to Bulldog Market</h1>
       <p>
-        Your one-stop shop for all your needs! We aim to be the ultimate online marketplace
-        for all UGA students and the Athens community. Whether you're looking to buy, sell, or explore,
-        out platform offers a seamless and secure experience for all your needs. 
-        Join us today and start shopping!
+        This is my portoflio
       </p>
       <button onClick={handleEnterSite} className="enter-button">
-        Begin Shopping!
+        Go To UGA DAWGS
       </button>
     </div>
   );

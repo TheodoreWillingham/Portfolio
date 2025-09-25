@@ -3,10 +3,10 @@
 import React, { useState, useRef } from "react";
 import { useRouter } from "next/navigation"; // For navigation
 import "../styles/PostItemPage.css";
+import Image from "next/image";
 
 const PostItemPage = () => {
   const router = useRouter();
-  const fileInputRef = useRef<HTMLInputElement | null>(null); 
   // const fileInputRef = useRef<HTMLInputElement | null>(null); // Reference to the hidden file input
   const [formData, setFormData] = useState({
     // image: null as File | null, // Store the uploaded file
@@ -117,7 +117,7 @@ const PostItemPage = () => {
       body: JSON.stringify(formData),
     });
 
-    const result = await response.json();
+    // const result = await response.json();
 
     //Resets the data here
     setFormData({
@@ -138,10 +138,12 @@ const PostItemPage = () => {
     <div className="post-item-page">
       <h1 className="post-item-title">Post Item</h1>
       <div className="post-item-form-container">
-        <img
+        <Image
           src="/assets/logo.png"
           alt="Bulldog Market Logo"
           className="post-item-logo"
+          width={200}          
+          height={200}
         />
         <button
           type="button"

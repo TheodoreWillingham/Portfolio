@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation"; // Use next/navigation for client-side routing
 import Image from "next/image";
 import "../styles/Navbar.css";
@@ -13,7 +13,7 @@ interface navBar {
 
 const Navbar: React.FC<navBar> = ({ onLogoClick }) => {
   const router = useRouter();
-  const { data: session, status } = useSession(); // 👈 check session
+  const { data: session} = useSession(); // 👈 check session
   const isLoggedIn = !!session; // 👈 true if session exists
 
   const handlePostItemClick = () => {

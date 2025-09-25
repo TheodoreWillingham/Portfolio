@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styles from '../styles/Items.module.css';
 import "../styles/Items.css"
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation'; Decided to go with hard reset instead because of css issues
 
 
 //Interface for each item

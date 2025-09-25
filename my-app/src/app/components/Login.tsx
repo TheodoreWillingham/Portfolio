@@ -77,7 +77,7 @@ export default function LoginPage() {
           className="text-center text-sm text-gray-500 mt-4"
           onClick={signupClicked}
         >
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <span className="text-red-700 font-semibold cursor-pointer">
             Sign up
           </span>

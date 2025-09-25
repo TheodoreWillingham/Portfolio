@@ -19,8 +19,7 @@ export const {
         password: { label: "Password", type: "password" },
       },
       async authorize(
-        credentials: Partial<Record<"email" | "password", unknown>>,
-        req: Request
+        credentials: Partial<Record<"email" | "password", unknown>>
       ): Promise<{ id: string; email: string; name: string } | null> {
         // Validate input types
         if (
@@ -56,7 +55,7 @@ export const {
             email: user.email,
             name: user.username,
           };
-        } catch (error: any) {
+        } catch (error: unknown) { //changed from any to unkown
           console.error("Auth error:", error);
           return null;
         }

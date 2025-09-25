@@ -1,4 +1,6 @@
 // app/not-found.tsx
+import Link from "next/link";
+
 export default function NotFound() {
     return (
       <div
@@ -9,9 +11,9 @@ export default function NotFound() {
         <p className="text-lg text-gray-700 mb-8">
           Sorry, we couldn’t find the page you were looking for.
         </p>
-        <a href="/" className="text-blue-600 underline">
+        <Link href="/" className="text-blue-600 underline">
           Go back home
-        </a>
+        </Link>
       </div>
     );
   }

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react"; // 👈 import auth
 import MapWithDirections from "./MapWithDirections"; // Import the MapWithDirections component
+import Image from "next/image";
+
 
 interface Item {
   _id: string;
@@ -16,7 +18,7 @@ interface Item {
 }
 
 export default function SpecificItem({ id }: { id: string }) {
-  const { data: session, status } = useSession(); // 👈 get session
+  const { data: session} = useSession(); // 👈 get session
   const isLoggedIn = !!session;
 
   const [item, setItem] = useState<Item | null>(null);
@@ -100,10 +102,12 @@ export default function SpecificItem({ id }: { id: string }) {
       >
         ← Back to Marketplace
       </button>
-      <img
+      <Image
         src={item.imageUrl}
         alt={item.name}
         className="w-full rounded mb-4"
+        height={200}
+        width={200}
       />
       <h1 className="text-3xl font-bold text-red-700 mb-2">{item.name}</h1>
       <p className="text-xl font-semibold">${item.price}</p>
