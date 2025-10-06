@@ -5,6 +5,8 @@ import { SessionProvider } from "next-auth/react";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
+      <head>
+      </head>
       <body>
         <div className="main-content">
         <SessionProvider>

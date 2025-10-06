@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react"; 
+import {ThemeToggle} from "../app/components/portfolio/ThemeToggle";
+// import { Component } from "lucide-react";
 
 export default function Home() {
   // const router = useRouter();
@@ -11,13 +13,22 @@ export default function Home() {
   };
 
   return (
-    <div className="home-container">
-      <p>
-        This is my portoflio
-      </p>
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Theme Toggle */}
+      <ThemeToggle />
+      {/* Background Effects */}
+
+      {/* NavBar */}
+
+      {/* Main Content*/}
+
+      {/* Footer */}
+
+
+      {/*       ADD BACK
       <button onClick={goToMarketPlace} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
         Go To UGA BullDawg Marketplace
-      </button>
-    </div>
+      </button> */}
+    </div>  
   );
 }
