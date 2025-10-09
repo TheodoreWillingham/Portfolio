@@ -4,6 +4,7 @@ import React from "react";
 import {ThemeToggle} from "./components/portfolio/ThemeToggle";
 import { StarBackground } from "./components/portfolio/StarBackground";
 import { NavBar } from "./components/portfolio/NavBar";
+import { HeroSection } from "./components/portfolio/HeroSection";
 
 // import { Component } from "lucide-react";
 
@@ -25,7 +26,11 @@ export default function Home() {
 
       {/* NavBar */}
       <NavBar />
+
       {/* Main Content*/}
+      <main>
+        <HeroSection />
+      </main>
 
       {/* Footer */}
 
