@@ -7,16 +7,12 @@ import { NavBar } from "./components/portfolio/NavBar";
 import { HeroSection } from "./components/portfolio/HeroSection";
 import { AboutSection } from "./components/portfolio/AboutSection";
 import { SkillsSection } from "./components/portfolio/SkillsSection";
+import { ProjectSection } from "./components/portfolio/ProjectSection";
 
 // import { Component } from "lucide-react";
 
 export default function Home() {
   // const router = useRouter();
-
-  const goToMarketPlace = () => {
-    // router.push("/main"); // Navigate to the original page.tsx (now at /main)
-    window.location.href = "/main"; //This hard resets the page and fixes styling errors
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -34,14 +30,11 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
+        <ProjectSection />
       </main>
 
       {/* Footer */}
 
-
-      {/* <button onClick={goToMarketPlace} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-        Go To UGA BullDawg Marketplace
-      </button> */}
     </div>  
   );
 }

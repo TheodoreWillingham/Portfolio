@@ -29,7 +29,7 @@ const Navbar: React.FC<navBar> = ({ onLogoClick }) => {
   };
 
   const handleSignOutClick = () => {
-    signOut({ callbackUrl: "/" }); // Redirect to homepage after signing out
+    signOut({ callbackUrl: "/bulldog-marketplace" }); // Redirect to homepage after signing out
   };
 
   return (

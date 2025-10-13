@@ -131,7 +131,7 @@ const PostItemPage = () => {
     });
 
     //Goes back to root ADD this later so it goes back to home page
-    router.push("/main");
+    router.push("/bulldog-marketplace");
   };
 
   return (
@@ -147,7 +147,7 @@ const PostItemPage = () => {
         />
         <button
           type="button"
-          onClick={() => router.push("/main")}
+          onClick={() => router.push("/bulldog-marketplace")}
           className="text-red-700 underline mb-4 hover:text-red-900 self-start"
         >
           Back to Marketplace

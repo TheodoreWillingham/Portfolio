@@ -65,7 +65,7 @@ export default function EditItem({ id }: { id: string }) {
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
       <h1 className="text-2xl font-bold text-red-700 mb-6">Edit Item</h1>
       <button
-        onClick={() => router.push("/main")}
+        onClick={() => router.push("/bulldog-marketplace")}
         type="button"
         className="mb-4 text-red-700 underline hover:text-red-900"
       >

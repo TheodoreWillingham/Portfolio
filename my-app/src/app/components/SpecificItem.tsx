@@ -80,7 +80,7 @@ export default function SpecificItem({ id }: { id: string }) {
       }
 
       alert("Item deleted successfully");
-      router.push("/main"); // Go back to the main page after delete
+      router.push("/bulldog-marketplace"); // Go back to the main page after delete
     } catch (error) {
       console.error("Delete error:", error);
       alert("Failed to delete item.");
@@ -97,7 +97,7 @@ export default function SpecificItem({ id }: { id: string }) {
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
       <button
         style={{ cursor: "pointer" }}
-        onClick={() => router.push("/main")}
+        onClick={() => router.push("/bulldog-marketplace")}
         className="mb-4 text-red-700 underline hover:text-red-900"
       >
         ← Back to Marketplace
