@@ -2,51 +2,91 @@ import { cn } from "@/app/lib/utils";
 import { Mail, MapPin, Phone, Linkedin, Instagram, Send } from "lucide-react";
 import toast from "react-hot-toast";
 import emailjs from "emailjs-com";
+import { useState } from "react";
 
 export const ContactSection = () => {
   const SERVICE_ID = "service_k5iar1r";
   const TEMPLATE_ID = "template_k6caq6w";
   const PUBLIC_KEY = "rf2mQwnS5p0Wc9Nb4";
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = (e) => {
+    setIsSubmitting(true)
     e.preventDefault();
 
     emailjs
       .sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY)
       .then((result) => {
-        alert("message sent!!");
-      }).catch(() => alert("Oops! Something went wrong. Please try again."))
-
-    setTimeout(() => {
-      toast.custom(
-        (t) => (
-          <div
-            className={`${
-              t.visible ? "animate-fade-in" : "animate-ping"
-            } max-w-md w-full bg-card shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-primary ring-opacity-30`}
-          >
-            <div className="flex-1 w-0 p-4">
-              <div className="flex items-center space-x-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
-                  <Send className="w-4 h-4 text-primary" />
+        setFormData({name: "", email: "", message: ""});
+        toast.custom(
+          (t) => (
+            <div
+              className={`${
+                t.visible ? "animate-fade-in" : "animate-ping"
+              } max-w-md w-full bg-card shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-primary ring-opacity-30`}
+            >
+              <div className="flex-1 w-0 p-4">
+                <div className="flex items-center space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                    <Send className="w-4 h-4 text-primary" />
+                  </div>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Mail sent successfully!
+                  </p>
                 </div>
-                <p className="text-sm font-medium text-muted-foreground">
-                  Mail sent successfully!
-                </p>
+              </div>
+              <div className="flex border-l border-primary/20">
+                <button
+                  onClick={() => toast.dismiss(t.id)}
+                  className="w-full border border-transparent rounded-none rounded-r-xl p-4 flex items-center justify-center text-sm font-medium text-primary hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  Close
+                </button>
               </div>
             </div>
-            <div className="flex border-l border-primary/20">
-              <button
-                onClick={() => toast.dismiss(t.id)}
-                className="w-full border border-transparent rounded-none rounded-r-xl p-4 flex items-center justify-center text-sm font-medium text-primary hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-primary"
-              >
-                Close
-              </button>
+          ),
+          { duration: 5000 } // how long the toast stays up
+        );
+        setIsSubmitting(false)
+      })
+      .catch(() => {
+        toast.custom(
+          (t) => (
+            <div
+              className={`${
+                t.visible ? "animate-fade-in" : "animate-ping"
+              } max-w-md w-full bg-card shadow-lg rounded-xl pointer-events-auto flex ring-1 ring-primary ring-opacity-30`}
+            >
+              <div className="flex-1 w-0 p-4">
+                <div className="flex items-center space-x-3">
+                  <div className="flex-shrink-0 w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                    <Send className="w-4 h-4 text-primary" />
+                  </div>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Oops! Message failed to send. Please try again.
+                  </p>
+                </div>
+              </div>
+              <div className="flex border-l border-primary/20">
+                <button
+                  onClick={() => toast.dismiss(t.id)}
+                  className="w-full border border-transparent rounded-none rounded-r-xl p-4 flex items-center justify-center text-sm font-medium text-primary hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  Close
+                </button>
+              </div>
             </div>
-          </div>
-        ),
-        { duration: 5000 } // <-- This is the correct place for duration
-      );
-    }, 1500);
+          ),
+          { duration: 5000 } // how long the toast stays up
+        );
+        setIsSubmitting(false)
+      });
   };
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
@@ -152,6 +192,8 @@ export const ContactSection = () => {
                   type="text"
                   name="name"
                   id="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="Theodore Willingham"
@@ -170,6 +212,8 @@ export const ContactSection = () => {
                   type="email"
                   name="email"
                   id="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="theodorewillingham@gmail.com"
@@ -187,6 +231,8 @@ export const ContactSection = () => {
                 <textarea
                   name="message"
                   id="message"
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none h-30"
                   placeholder="Hello, I'd like to talk about"
@@ -199,6 +245,7 @@ export const ContactSection = () => {
                   "cosmic-button w-full flex items-center justify-center gap-2"
                 )}
               >
+                {isSubmitting ? "Sending..." : "Send Message"}
                 <Send size={16} />
               </button>
             </form>
