@@ -17,13 +17,13 @@ export const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     e.preventDefault();
 
     emailjs
       .sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY)
       .then((result) => {
-        setFormData({name: "", email: "", message: ""});
+        setFormData({ name: "", email: "", message: "" });
         toast.custom(
           (t) => (
             <div
@@ -53,7 +53,7 @@ export const ContactSection = () => {
           ),
           { duration: 5000 } // how long the toast stays up
         );
-        setIsSubmitting(false)
+        setIsSubmitting(false);
       })
       .catch(() => {
         toast.custom(
@@ -85,7 +85,7 @@ export const ContactSection = () => {
           ),
           { duration: 5000 } // how long the toast stays up
         );
-        setIsSubmitting(false)
+        setIsSubmitting(false);
       });
   };
   return (
@@ -148,7 +148,11 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
+                  <a
+                    href="https://www.google.com/maps?q=Athens+Georgia"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    target="_blank"
+                  >
                     Athens, GA, United States
                   </a>
                 </div>
@@ -159,12 +163,14 @@ export const ContactSection = () => {
               <h4 className="font-medium mb-4 text-center"> Connect With Me</h4>
               <div className="flex space-x-4 justify-center">
                 <a
+                  className="hover:text-primary transition-colors text-muted-foreground"
                   href="https://www.linkedin.com/in/theodore-willingham-050548299/"
                   target="_blank"
                 >
                   <Linkedin />
                 </a>
                 <a
+                  className="hover:text-primary transition-colors text-muted-foreground"
                   href="https://www.instagram.com/theodore_willingham/"
                   target="_blank"
                 >
@@ -193,7 +199,9 @@ export const ContactSection = () => {
                   name="name"
                   id="name"
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="Theodore Willingham"
@@ -213,7 +221,9 @@ export const ContactSection = () => {
                   name="email"
                   id="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="theodorewillingham@gmail.com"
@@ -232,7 +242,9 @@ export const ContactSection = () => {
                   name="message"
                   id="message"
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none h-30"
                   placeholder="Hello, I'd like to talk about"
