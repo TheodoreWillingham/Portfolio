@@ -15,7 +15,7 @@ export const HeroSection = () => {
                 {/* Description of self -- hook */}
                 <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
                     This is where we can put a decent amount of personal
-                     portfolio stuff about ssrl and stuff, i'll add later.
+                     portfolio stuff about ssrl. I will add more later...
                 </p>
 
                 {/* animated Button for Project */}
