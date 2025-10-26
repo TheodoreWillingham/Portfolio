@@ -1,4 +1,5 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
@@ -6,10 +7,10 @@ const projects = [
     title: "AI Resume Critiquer",
     description:
       "A simple yet effective AI Resume Critiquer using StreamLit and OpenAI's LLM.",
-    image: "/Projects/AI-Resume-Critiquer.png",
+    image: "Projects/AI-Resume-Critiquer.png",
     tags: ["StreamLit", "OpenAI"],
     githubUrl: "https://github.com/TheodoreWillingham/AI-Projects.git",
-    demoUrl: "/not-found",
+    demoUrl: "not-found",
   },
   {
     id: 2,
@@ -26,7 +27,7 @@ const projects = [
     title: "Small Satellite Research Laboratory",
     description:
       "Assigned to MEMESat-1, a cube sat capable of bringing memes to space.",
-    image: "/Projects/SSRL.png",
+    image: "Projects/SSRL.png",
     tags: ["Fprime", "Embedded Systems"],
     githubUrl:
       "https://github.com/SmallSatelliteResearchLaboratoryUGA/MEMESat-FSW.git",
@@ -53,10 +54,12 @@ export const ProjectSection = () => {
               className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
             >
               <div className="h-48 overflow-hidden">
-                <img
-                  src={project.image}
+                <Image
+                  src={`/${project.image}`}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  width={400}
+                  height={400}
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
               <div className="p-6">

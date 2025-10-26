@@ -92,7 +92,7 @@ export const AboutSection = () => {
                     Athens-Clarke County Police Cadet{" "}
                   </h4>
                   <p className="text-muted-foreground">
-                    Collaborated with the ACCPD's Technology Division to enhance
+                    Collaborated with the ACCPD&apos;s Technology Division to enhance
                     public safety.
                   </p>
                 </div>
