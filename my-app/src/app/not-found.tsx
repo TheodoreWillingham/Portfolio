@@ -1,3 +1,5 @@
+import Link  from "next/link";
+
 // app/not-found.tsx
 export default function NotFound() {
   return (
@@ -6,9 +8,9 @@ export default function NotFound() {
         404 - Page Not Found
       </h1>
       <p className="mb-6 text-primary-foreground">Sorry, we couldn&apos;t find the page you were looking for.</p>
-      <a href="/" className="cosmic-button">
+      <Link href="/" className="cosmic-button">
         Go back home
-      </a>
+      </Link>
     </div>
   );
 }
