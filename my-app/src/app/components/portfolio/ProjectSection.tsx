@@ -5,7 +5,7 @@ const projects = [
     id: 1,
     title: "AI Resume Critiquer",
     description:
-      "A simple yet effective AI Resume Critiquer using StreamLit and OpenAI's LLM",
+      "A simple yet effective AI Resume Critiquer using StreamLit and OpenAI's LLM.",
     image: "/Projects/AI-Resume-Critiquer.png",
     tags: ["StreamLit", "OpenAI"],
     githubUrl: "https://github.com/TheodoreWillingham/AI-Projects.git",
@@ -15,7 +15,7 @@ const projects = [
     id: 2,
     title: "Bulldog Marketplace",
     description:
-      "A online marketplace for UGA students using MapBoxAPI and MongoDB as backend",
+      "A online marketplace for UGA students using MapBoxAPI and MongoDB as backend.",
     image: "Projects/Bulldog Marketplace.png",
     tags: ["React", "Tailwind CSS", "MongoDB"],
     githubUrl: "https://github.com/TheodoreWillingham/Portfolio.git",
@@ -25,7 +25,7 @@ const projects = [
     id: 3,
     title: "Small Satellite Research Laboratory",
     description:
-      "Assigned to MEME-Sat, a cube sat capable of bringing memes to space",
+      "Assigned to MEMESat-1, a cube sat capable of bringing memes to space.",
     image: "/Projects/SSRL.png",
     tags: ["Fprime", "Embedded Systems"],
     githubUrl:
@@ -42,8 +42,8 @@ export const ProjectSection = () => {
           Featured <span className="text-primary"> Projects </span>
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of my my recent Projects. Each project caregully
-          showcases my experiences learning and stuff{" "}
+          Here are some of my most recent Projects. I am curretnly working on a
+          personal fish-tank IoT project which I will be posting soon.{" "}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

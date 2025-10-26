@@ -96,9 +96,9 @@ export const ContactSection = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          If you want a hard worker that's lowkey goated at valorant and
-          communnication... Feel free to reach out. I'm always excited to gain
-          new experiences.
+          If you&apos;re looking for a versatile computer guy or
+          have an exciting project in mind, feel free to reach out — I&apos;m always
+          eager to learn, collaborate, and take on new challenges.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">
