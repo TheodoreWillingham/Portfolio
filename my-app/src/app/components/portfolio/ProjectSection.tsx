@@ -16,7 +16,7 @@ const projects = [
     id: 2,
     title: "Bulldog Marketplace",
     description:
-      "A online marketplace for UGA students using MapBoxAPI and MongoDB as backend.",
+      "A online marketplace for UGA students using MapBoxAPI and MongoDB as backend. (Desktop ONLY)",
     image: "Projects/Bulldog Marketplace.png",
     tags: ["React", "Tailwind CSS", "MongoDB"],
     githubUrl: "https://github.com/TheodoreWillingham/Portfolio.git",
