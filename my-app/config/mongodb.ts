@@ -11,6 +11,9 @@ const connectMongoDB = async (): Promise<void> => {
 
   try {
     const uri = process.env.MONGODB_URI;
+
+    console.log("MONGODB_URI:", process.env.MONGODB_URI ? "Loaded" : "Missing"); //error checking for vercel
+
     if (!uri) {
       throw new Error("MONGODB_URI is not defined in environment variables.");
     }
