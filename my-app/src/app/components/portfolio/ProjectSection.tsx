@@ -4,13 +4,13 @@ import Image from "next/image";
 const projects = [
   {
     id: 1,
-    title: "AI Resume Critiquer",
+    title: "Theo's Fish Tank Monitor",
     description:
-      "A simple yet effective AI Resume Critiquer using StreamLit and OpenAI's LLM.",
-    image: "Projects/AI-Resume-Critiquer.png",
-    tags: ["StreamLit", "OpenAI"],
-    githubUrl: "https://github.com/TheodoreWillingham/AI-Projects.git",
-    demoUrl: "not-found",
+      "ESP32-powered real-time aquarium health monitoring for reliable, remote oversight during vacations",
+    image: "Projects/FishTank.png",
+    tags: ["ESP32", "SupaBase", "Vite"],
+    githubUrl: "https://github.com/TheodoreWillingham/FishTank-ESP32-Monitor",
+    demoUrl: "https://fish-tank-monitor.vercel.app/",
   },
   {
     id: 2,
@@ -43,8 +43,8 @@ export const ProjectSection = () => {
           Featured <span className="text-primary"> Projects </span>
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of my most recent Projects. I am curretnly working on a
-          personal fish-tank IoT project which I will be posting soon.{" "}
+          These are a few of my most recent projects. I love bringing real-world
+          solutions to life through microcontrollers and programming.{" "}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
