@@ -53,12 +53,13 @@ export const ProjectSection = () => {
               key={key}
               className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden" >
                 <Image
                   src={`/${project.image}`}
                   alt={project.title}
                   width={400}
                   height={400}
+                  onClick={() => window.open(project.demoUrl, "_blank")}
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
